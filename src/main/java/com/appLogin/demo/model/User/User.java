@@ -34,8 +34,9 @@ public class User implements UserDetails {
     private String password;
 
     @NotBlank
-    @Column(name = "mail")
-    private String mail;
+    @Column(name = "email", nullable = false, unique = true)
+
+    private String email;
 
     @Column(name = "phone")
     private String phone;

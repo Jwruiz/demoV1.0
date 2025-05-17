@@ -25,12 +25,14 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-                .cors(cors -> {})
-                .csrf(csrf -> csrf.disable())
+                .cors(cors -> {}) // Permitir CORS si lo necesitás
+                .csrf(csrf -> csrf.disable()) // Deshabilita CSRF para APIs REST
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                HttpMethod.POST, "/login"
+                                HttpMethod.POST,
+                                "/auth/login",
+                                "/auth/register"
                         ).permitAll()
                         .requestMatchers(
                                 "/v3/api-docs/**",
@@ -54,3 +56,4 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 }
+
