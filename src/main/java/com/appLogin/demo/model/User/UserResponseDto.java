@@ -8,6 +8,6 @@ public record UserResponseDto (
 ) {
     // Constructor que inicializa los campos a partir de un objeto User
     public UserResponseDto(User user) {
-        this(user.getUsername(), user.getMail(), user.getPhone(), user.getAvatar());
+        this(user.getUsername(), user.getEmail(), user.getPhone(), user.getAvatar());
     }
 }
